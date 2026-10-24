@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: gilded-chat
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: gilded-data
+      mountPath: /var/data
+      sizeGB: 1
